@@ -1,0 +1,2 @@
+This is another sample file for testing.
+The client can request this file by typing 'file2.txt'.

@@ -1,0 +1,2 @@
+This is file1 stored on the server.
+It will be sent to a client upon request.
