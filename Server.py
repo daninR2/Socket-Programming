@@ -70,4 +70,5 @@ def start_server():
         threading.Thread(target=handle_client, args=(conn, addr, client_name)).start()
 
 if __name__ == "__main__":
+    print("[STARTING] Server is starting...")
     start_server()
