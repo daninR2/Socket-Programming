@@ -7,7 +7,7 @@ from datetime import datetime
 HOST = '127.0.0.1'  # Localhost (your computer)
 PORT = 12345
 MAX_CLIENTS = 3
-REPO_DIR = './sever_list'
+REPO_DIR = './server_list'
 
 client_cache = {}  # Stores info about connected clients
 client_count = 0
@@ -31,7 +31,9 @@ def handle_client(conn, addr, client_name):
                 status_info = "\n".join([f"{c}: {v}" for c, v in client_cache.items()])
                 conn.send(status_info.encode())
             elif msg.lower() == 'list':
+                print("[DEBUG] Received 'list' request from client")
                 files = os.listdir(REPO_DIR)
+                print("[DEBUG] Files in repo:", files)
                 conn.send("\n".join(files).encode())
             elif os.path.isfile(os.path.join(REPO_DIR, msg)):
                 with open(os.path.join(REPO_DIR, msg), 'rb') as f:
