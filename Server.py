@@ -7,7 +7,7 @@ from datetime import datetime
 HOST = '127.0.0.1'  # Localhost (your computer)
 PORT = 12345
 MAX_CLIENTS = 3
-REPO_DIR = './server_repo'  # Folder where files are stored
+REPO_DIR = './sever_list'
 
 client_cache = {}  # Stores info about connected clients
 client_count = 0
