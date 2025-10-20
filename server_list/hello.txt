@@ -1,2 +1,3 @@
 Hello from the server repository!
-If you can read this, your file transfer works!
+
+This is a test file, if you're reading this it works!
