@@ -1,0 +1,3 @@
+Hello from the server repository!
+
+This is a test file, if you're reading this it works!
