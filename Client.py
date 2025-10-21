@@ -34,15 +34,28 @@ def start_client():
         # Receive data from server
         data = client.recv(4096)
 
-        # If user asked for a file (e.g., filename.txt)
+        # --- If user asked for a file (e.g., filename.txt) ---
         if '.' in msg:
             filename = "downloaded_" + msg
             with open(filename, 'wb') as f:
                 f.write(data)
             print(f"File '{msg}' downloaded and saved as '{filename}'")
+
+            # Try to read and display the file contents (for text files)
+            try:
+                with open(filename, 'r', encoding='utf-8') as f:
+                    contents = f.read()
+                print(contents)
+            except Exception as e:
+                print("(File saved but not printable — likely binary data)")
+                # Optional: print(f"DEBUG: {e}")
+
         else:
-            # Normal text reply
-            print("Server:", data.decode())
+            # --- Normal text reply (e.g., ACK, list, status) ---
+            try:
+                print("Server:", data.decode())
+            except UnicodeDecodeError:
+                print("(Received non-text data)")
 
     client.close()
 
